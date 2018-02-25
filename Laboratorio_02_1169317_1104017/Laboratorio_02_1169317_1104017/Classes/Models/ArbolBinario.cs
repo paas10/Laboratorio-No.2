@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,7 @@ namespace Laboratorio_02_1169317_1104017
         public NodoArbol<T> nIzquierda;
         public NodoArbol<T> nDerecha;
 
-        public NodoArbol(T Valor, NodoArbol<T> izquierda, NodoArbol<T> derecha)
+       public NodoArbol(T Valor, NodoArbol<T> izquierda, NodoArbol<T> derecha)
         {
             this.valor = Valor;
             nIzquierda = izquierda;
@@ -21,10 +22,8 @@ namespace Laboratorio_02_1169317_1104017
         public NodoArbol(T Valor) : this(Valor, null, null) { }
 
     }
-    //Comentario de Sincronizacion
-    //Comentario de Prueba
 
-    public class ArbolBinario
+    public class ArbolBinario<T>: IEnumerable<T> where T : IComparable
     {
 
         public NodoArbol<T> nRaiz;
@@ -125,7 +124,8 @@ namespace Laboratorio_02_1169317_1104017
             while (current != null && i < iElementos)
             {
                 yield return current.valor;
-                //current = current.siguiente;
+                current = current.nIzquierda;
+                current = current.nDerecha;
                 i++;
             }
         }
