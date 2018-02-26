@@ -18,12 +18,13 @@ namespace Laboratorio_02_1169317_1104017.Classes.Models
             }
         }
 
-
+        public ArbolBinario<Pais> ArbolPais;
         public ArbolBinario<string> Arbolstring;
         public ArbolBinario<int> Arbolint;
 
         public DataBase()
         {
+            ArbolPais = new ArbolBinario<Pais>();
             Arbolstring = new ArbolBinario<string>();
             Arbolint = new ArbolBinario<int>();
         }

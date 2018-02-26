@@ -132,7 +132,7 @@ namespace Laboratorio_02_1169317_1104017
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return GetEnumerator();
         }
     }
 }

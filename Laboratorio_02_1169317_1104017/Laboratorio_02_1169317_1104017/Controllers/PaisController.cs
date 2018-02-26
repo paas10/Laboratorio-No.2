@@ -1,4 +1,5 @@
 ﻿using Laboratorio_02_1169317_1104017.Classes.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -112,35 +113,40 @@ namespace Laboratorio_02_1169317_1104017.Controllers
             //El Archivo se lee en una lista para luego ingresarlo
 
             //Se crea un Jugador Momentaneo para pasar los datos
-
+            
             string Dato = Lector.ReadLine();
-            Dato = Lector.ReadLine();
-            string[] Linea = Dato.Split(',');
+            Dato += Lector.ReadLine();
+            string Linea = Dato;
 
-            while (Dato != null)
+            while(Dato != null)
             {
-                var paisnuevo = new NodoArbol<string>("");
-                {
-                    paisnuevo.valor = Convert.ToString(DataBase.Instance.Arbolstring.Count() + 1);
-                    paisnuevo.valor = Linea[0];
-                    paisnuevo.valor = Linea[1];
-                };
+                Dato = Lector.ReadLine();
+                Linea = Linea + Dato;
+            }
 
-               
 
-                DataBase.Instance.Arbolstring.Insertar(paisnuevo);
+
+                Pais PaisNuevo = JsonConvert.DeserializeObject<Pais>(Linea);
+
+
+                // DATA.INSTANCE ARBOL QUE LA GRAN PUTA
+
+                NuevoNodo.valor = PaisNuevo;
+
+
+                DataBase.Instance.Arbolstring.Insertar(NuevoNodo);
 
                 Dato = Lector.ReadLine();
 
-                if (Dato != null)
+                /*if (Dato != null)
                 {
                     Linea = Dato.Split(',');
-                }
+                }*/
 
-            }
 
             return RedirectToAction("Index");
 
         }
     }
+
 }
