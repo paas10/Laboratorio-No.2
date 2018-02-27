@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
+using System.Web.Mvc;       
 
 namespace Laboratorio_02_1169317_1104017.Controllers
 {
@@ -13,8 +13,22 @@ namespace Laboratorio_02_1169317_1104017.Controllers
     {
 
         // GET: Pais
-        public ActionResult Index()
+        public ActionResult Index(int? Indicador)
         {
+            Indicador = 2;
+            if(Indicador == 1)
+            {
+                return View(DataBase.Instance.ArbolPais.LeerArbol(1));
+            }
+            else if (Indicador == 2)
+            {
+                return View(DataBase.Instance.ArbolPais.LeerArbol(2));
+
+            }else if (Indicador == 3)
+            {
+                return View(DataBase.Instance.ArbolPais.LeerArbol(3));
+            }
+
             return View();
         }
 
@@ -113,36 +127,19 @@ namespace Laboratorio_02_1169317_1104017.Controllers
             //El Archivo se lee en una lista para luego ingresarlo
 
             //Se crea un Jugador Momentaneo para pasar los datos
-            
+
             string Dato = Lector.ReadLine();
             Dato += Lector.ReadLine();
             string Linea = Dato;
 
-            while(Dato != null)
+            while (Dato != null)
             {
                 Dato = Lector.ReadLine();
                 Linea = Linea + Dato;
             }
 
-
-
-                Pais PaisNuevo = JsonConvert.DeserializeObject<Pais>(Linea);
-
-
-                // DATA.INSTANCE ARBOL QUE LA GRAN PUTA
-
-                NuevoNodo.valor = PaisNuevo;
-
-
-                DataBase.Instance.Arbolstring.Insertar(NuevoNodo);
-
-                Dato = Lector.ReadLine();
-
-                /*if (Dato != null)
-                {
-                    Linea = Dato.Split(',');
-                }*/
-
+            NodoArbol<Pais> ListadePaises = JsonConvert.DeserializeObject<NodoArbol<Pais>>(Linea);
+            DataBase.Instance.ArbolPais.Insertar(ListadePaises);
 
             return RedirectToAction("Index");
 

@@ -9,17 +9,15 @@ namespace Laboratorio_02_1169317_1104017
     public class NodoArbol<T>
     {
         public T valor;
-        public NodoArbol<T> nIzquierda;
-        public NodoArbol<T> nDerecha;
+        public NodoArbol<T> izquierdo;
+        public NodoArbol<T> derecho;
 
        public NodoArbol(T Valor, NodoArbol<T> izquierda, NodoArbol<T> derecha)
         {
             this.valor = Valor;
-            nIzquierda = izquierda;
-            nDerecha = derecha;
+            izquierdo = izquierda;
+            derecho = derecha;
         }
-
-        public NodoArbol(T Valor) : this(Valor, null, null) { }
 
     }
 
@@ -54,51 +52,51 @@ namespace Laboratorio_02_1169317_1104017
 
                     if (nNuevo.valor.CompareTo(nodoAuxiliar.valor) > 0)
                     {
-                        nodoAuxiliar = nodoAuxiliar.nDerecha;
+                        nodoAuxiliar = nodoAuxiliar.derecho;
                         bDerecha = true;
                     }
                     else
                     {
-                        nodoAuxiliar = nodoAuxiliar.nIzquierda;
+                        nodoAuxiliar = nodoAuxiliar.izquierdo;
                         bDerecha = false;
                     }
                 }
 
                 if (bDerecha)
-                    nodoPadre.nDerecha = nNuevo;
+                    nodoPadre.derecho = nNuevo;
                 else
-                    nodoPadre.nIzquierda = nNuevo;
+                    nodoPadre.izquierdo = nNuevo;
 
             }
         }
 
-        private void PreOrden(NodoArbol<T> nodoAuxiliar, ref List<NodoArbol<T>> resultado)
+        private void PreOrden(NodoArbol<T> nodoAuxiliar, ref List<T> resultado)
         {
             if (nodoAuxiliar != null)
             {
-                resultado.Add(nodoAuxiliar);
-                PreOrden(nodoAuxiliar.nIzquierda, ref resultado);
-                PreOrden(nodoAuxiliar.nDerecha, ref resultado);
+                resultado.Add(nodoAuxiliar.valor);
+                PreOrden(nodoAuxiliar.izquierdo, ref resultado);
+                PreOrden(nodoAuxiliar.derecho, ref resultado);
             }
         }
 
-        private void InOrden(NodoArbol<T> nodoAuxiliar, ref List<NodoArbol<T>> resultado)
+        private void InOrden(NodoArbol<T> nodoAuxiliar, ref List<T> resultado)
         {
             if (nodoAuxiliar != null)
             {
-                InOrden(nodoAuxiliar.nIzquierda, ref resultado);
-                resultado.Add(nodoAuxiliar);
-                InOrden(nodoAuxiliar.nDerecha, ref resultado);
+                InOrden(nodoAuxiliar.izquierdo, ref resultado);
+                resultado.Add(nodoAuxiliar.valor);
+                InOrden(nodoAuxiliar.derecho, ref resultado);
             }
         }
 
-        private void PostOrden(NodoArbol<T> nodoAuxiliar, ref List<NodoArbol<T>> resultado)
+        private void PostOrden(NodoArbol<T> nodoAuxiliar, ref List<T> resultado)
         {
             if (nodoAuxiliar != null)
             {
-                PostOrden(nodoAuxiliar.nIzquierda, ref resultado);
-                PostOrden(nodoAuxiliar.nDerecha, ref resultado);
-                resultado.Add(nodoAuxiliar);
+                PostOrden(nodoAuxiliar.izquierdo, ref resultado);
+                PostOrden(nodoAuxiliar.derecho, ref resultado);
+                resultado.Add(nodoAuxiliar.valor);
             }
         }
 
@@ -107,14 +105,17 @@ namespace Laboratorio_02_1169317_1104017
         /// </summary>
         /// <param name="code">1. Pre-Orden  2. In-Orden  3. Post-Orden</param>
         /// <param name="dt">DataTable donde se almacena la informacion de los nodos</param>
-        public void LeerArbol(int code, ref List<NodoArbol<T>> resultado)
+        public List<T> LeerArbol(int code)
         {
+            List<T> resultado = new List<T>();
             switch (code)
             {
                 case 1: PreOrden(nRaiz, ref resultado); break;
                 case 2: InOrden(nRaiz, ref resultado); break;
                 case 3: PostOrden(nRaiz, ref resultado); break;
             }
+
+            return resultado;
         }
 
         public IEnumerator<T> GetEnumerator()
@@ -124,8 +125,8 @@ namespace Laboratorio_02_1169317_1104017
             while (current != null && i < iElementos)
             {
                 yield return current.valor;
-                current = current.nIzquierda;
-                current = current.nDerecha;
+                current = current.izquierdo;
+                current = current.derecho;
                 i++;
             }
         }

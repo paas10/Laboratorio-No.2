@@ -9,28 +9,22 @@ namespace Laboratorio_02_1169317_1104017
     public class Pais : IComparable
     {
 
-        [Key]
-        public int ID { get; set; }
-
         [Required(AllowEmptyStrings = false, ErrorMessage = "El nombre del Pais es requerido")]
-        public string NombrePais { get; set; }
+        public string Nombre { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "El nombre del Grupo es requerido")]
         public string Grupo { get; set; }
 
-        public int CompareTo(Pais other)
+        public Pais(string Nombre, string Grupo)
         {
-            return other.ID < ID ? -1 : other.ID == ID ? 0 : 1;
+            this.Nombre = Nombre;
+            this.Grupo = Grupo;
         }
 
-        public Comparison<Pais> CompareById = delegate (Pais i, Pais j)
-        {
-            return i.CompareTo(j);
-        };
-
+       
         public Comparison<Pais> CompareByName = delegate (Pais i, Pais j)
         {
-            return i.NombrePais.CompareTo(j.NombrePais);
+            return i.Nombre.CompareTo(j.Nombre);
         };
 
         public Comparison<Pais> CompareByGroup = delegate (Pais i, Pais j)
@@ -40,27 +34,20 @@ namespace Laboratorio_02_1169317_1104017
 
         public override string ToString()
         {
-            return $"{ID}|{NombrePais}|{Grupo}";
+            return $"{Nombre}|{Grupo}";
         }
-
+        
         public bool Equals(Pais pais)
         {
-            bool igual = pais.NombrePais == NombrePais;
+            bool igual = pais.Nombre == Nombre;
             igual = igual && pais.Grupo == Grupo;
             return igual;
         }
 
         public int CompareTo(object obj)
         {
-            try
-            {
-                Pais pais = obj as Pais;
-                return pais.ID < ID ? -1 : pais.ID == ID ? 0 : 1;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
+            return Nombre.CompareTo(obj);
         }
+
     }
 }
