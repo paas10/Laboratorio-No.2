@@ -117,7 +117,7 @@ namespace Laboratorio_02_1169317_1104017.Controllers
             if (Path.GetExtension(file.FileName) != ".json")
             {
                 //Aca se debe de Agregar una Vista de Error, o de Datos No Cargados
-                //return RedirectToAction("Index");
+                return RedirectToAction("Error","Shared");
             }
 
             Stream Direccion = file.InputStream;
@@ -138,12 +138,29 @@ namespace Laboratorio_02_1169317_1104017.Controllers
                 Linea = Linea + Dato;
             }
 
-            NodoArbol<Pais> ListadePaises = JsonConvert.DeserializeObject<NodoArbol<Pais>>(Linea);
-            DataBase.Instance.ArbolPais.Insertar(ListadePaises);
+            try
+            {
+                NodoArbol<Pais> ListadePaises = JsonConvert.DeserializeObject<NodoArbol<Pais>>(Linea);
+                DataBase.Instance.ArbolPais.Insertar(ListadePaises);
 
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                try
+                {
+                    NodoArbol<int> ListadeNumeros = JsonConvert.DeserializeObject<NodoArbol<int>>(Linea);
+                    DataBase.Instance.Arbolint.Insertar(ListadeNumeros);
+                }
+                catch
+                {
+                    NodoArbol<string> ListadeTexto = JsonConvert.DeserializeObject<NodoArbol<string>>(Linea);
+                    DataBase.Instance.Arbolstring.Insertar(ListadeTexto);
+                }
+
+                return RedirectToAction("Index2");
+            }
 
         }
     }
-
 }
