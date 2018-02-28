@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Laboratorio_02_1169317_1104017.Classes.Models;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,20 +7,6 @@ using System.Web;
 
 namespace Laboratorio_02_1169317_1104017
 {
-    public class NodoArbol<T>
-    {
-        public T valor;
-        public NodoArbol<T> izquierdo;
-        public NodoArbol<T> derecho;
-
-       public NodoArbol(T Valor, NodoArbol<T> izquierda, NodoArbol<T> derecha)
-        {
-            this.valor = Valor;
-            izquierdo = izquierda;
-            derecho = derecha;
-        }
-
-    }
 
     public class ArbolBinario<T>: IEnumerable<T> where T : IComparable
     {
