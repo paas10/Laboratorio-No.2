@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Librería_de_Clases;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -20,6 +21,7 @@ namespace Laboratorio_02_1169317_1104017
             this.Nombre = Nombre;
             this.Grupo = Grupo;
         }
+
 
        
         public Comparison<Pais> CompareByName = delegate (Pais i, Pais j)
@@ -44,10 +46,31 @@ namespace Laboratorio_02_1169317_1104017
             return igual;
         }
 
+        Librería_de_Clases.Funciones objFunciones = new Librería_de_Clases.Funciones();
+
+        public int CompareTo(object obj)
+        {
+            try
+            {
+                Pais pais = obj as Pais;
+
+                return objFunciones.CompararCadena(pais.Nombre, Nombre);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+
+        /*
+         * ESTE LO HIZO JOUSÉ
+         * 
         public int CompareTo(object obj)
         {
             return Nombre.CompareTo(obj);
         }
+        */
 
     }
 }

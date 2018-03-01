@@ -13,6 +13,7 @@ namespace Laboratorio_02_1169317_1104017.Controllers
     public class ArbolBinarioController : Controller
     {
         // GET: ArbolBinario
+        // Index del arbol de paises
         public ActionResult Index(int? Indicador)
         {
             Indicador = 2;
@@ -33,6 +34,7 @@ namespace Laboratorio_02_1169317_1104017.Controllers
             return View();
         }
 
+        // Index del arbol de enteros
         public ActionResult IndexInt(int? Indicador)
         {
             Indicador = 2;
@@ -53,6 +55,7 @@ namespace Laboratorio_02_1169317_1104017.Controllers
             return View();
         }
 
+        // Index del arbol de strings
         public ActionResult IndexString(int? Indicador)
         {
             Indicador = 2;
@@ -85,13 +88,17 @@ namespace Laboratorio_02_1169317_1104017.Controllers
             return View();
         }
 
+
         // POST: ArbolBinario/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
             try
             {
-                // TODO: Add insert logic here
+                Pais nuevoPais = new Pais(collection["Nombre"], collection["Grupo"]);
+                NodoArbol<Pais> nNodo = new NodoArbol<Pais>(nuevoPais, null, null);
+
+                DataBase.Instance.ArbolPais.Insertar(nNodo);
 
                 return RedirectToAction("Index");
             }
