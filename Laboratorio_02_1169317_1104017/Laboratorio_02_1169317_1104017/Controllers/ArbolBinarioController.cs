@@ -1,4 +1,5 @@
-﻿using Laboratorio_02_1169317_1104017.Classes.Models;
+﻿using Librería_de_Clases;
+using Laboratorio_02_1169317_1104017.Classes.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -197,9 +198,9 @@ namespace Laboratorio_02_1169317_1104017.Controllers
                 {
                     NodoArbol<string> ListadeTexto = JsonConvert.DeserializeObject<NodoArbol<string>>(Linea);
                     DataBase.Instance.Arbolstring.Insertar(ListadeTexto);
-                }
 
-                return RedirectToAction("IndexString");
+                    return RedirectToAction("IndexString");
+                }
             }
 
         }

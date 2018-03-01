@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
-namespace Laboratorio_02_1169317_1104017.Classes.Models
+namespace Librería_de_Clases
 {
     public class NodoArbol<T>
     {

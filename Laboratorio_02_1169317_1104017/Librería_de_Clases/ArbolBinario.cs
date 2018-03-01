@@ -1,11 +1,9 @@
-﻿using Laboratorio_02_1169317_1104017.Classes.Models;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
-namespace Laboratorio_02_1169317_1104017
+namespace Librería_de_Clases
 {
 
     public class ArbolBinario<T>: IEnumerable<T> where T : IComparable

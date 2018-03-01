@@ -143,9 +143,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Classes\Models\DataBase.cs" />
-    <Compile Include="Classes\Models\NodoArbol.cs" />
     <Compile Include="Controllers\ArbolBinarioController.cs" />
-    <Compile Include="Classes\Models\ArbolBinario.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -210,6 +208,12 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Librería_de_Clases\Librería_de_Clases.csproj">
+      <Project>{7fb210d2-e9cf-4557-9b79-09b3a8a5fb74}</Project>
+      <Name>Librería_de_Clases</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
