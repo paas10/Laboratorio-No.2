@@ -145,7 +145,6 @@
     <Compile Include="Classes\Models\DataBase.cs" />
     <Compile Include="Classes\Models\NodoArbol.cs" />
     <Compile Include="Controllers\ArbolBinarioController.cs" />
-    <Compile Include="Controllers\PaisController.cs" />
     <Compile Include="Classes\Models\ArbolBinario.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -191,10 +190,10 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Pais\UploadFile.cshtml" />
-    <Content Include="Views\Pais\Index.cshtml" />
-    <Content Include="Views\ArbolBinario\UploadFile.cshtml" />
     <Content Include="Views\ArbolBinario\Index.cshtml" />
+    <Content Include="Views\ArbolBinario\UploadFile.cshtml" />
+    <Content Include="Views\ArbolBinario\IndexInt.cshtml" />
+    <Content Include="Views\ArbolBinario\IndexString.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

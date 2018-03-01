@@ -32,6 +32,46 @@ namespace Laboratorio_02_1169317_1104017.Controllers
             return View();
         }
 
+        public ActionResult IndexInt(int? Indicador)
+        {
+            Indicador = 2;
+            if (Indicador == 1)
+            {
+                return View(DataBase.Instance.Arbolint.LeerArbol(1));
+            }
+            else if (Indicador == 2)
+            {
+                return View(DataBase.Instance.Arbolint.LeerArbol(2));
+
+            }
+            else if (Indicador == 3)
+            {
+                return View(DataBase.Instance.Arbolint.LeerArbol(3));
+            }
+
+            return View();
+        }
+
+        public ActionResult IndexString(int? Indicador)
+        {
+            Indicador = 2;
+            if (Indicador == 1)
+            {
+                return View(DataBase.Instance.Arbolstring.LeerArbol(1));
+            }
+            else if (Indicador == 2)
+            {
+                return View(DataBase.Instance.Arbolstring.LeerArbol(2));
+
+            }
+            else if (Indicador == 3)
+            {
+                return View(DataBase.Instance.Arbolstring.LeerArbol(3));
+            }
+
+            return View();
+        }
+
         // GET: ArbolBinario/Details/5
         public ActionResult Details(int id)
         {
@@ -94,7 +134,6 @@ namespace Laboratorio_02_1169317_1104017.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
 
                 return RedirectToAction("Index");
             }
@@ -152,7 +191,7 @@ namespace Laboratorio_02_1169317_1104017.Controllers
                     NodoArbol<int> ListadeNumeros = JsonConvert.DeserializeObject<NodoArbol<int>>(Linea);
                     DataBase.Instance.Arbolint.Insertar(ListadeNumeros);
 
-                    return RedirectToAction("Index");
+                    return RedirectToAction("IndexInt");
                 }
                 catch
                 {
@@ -160,7 +199,7 @@ namespace Laboratorio_02_1169317_1104017.Controllers
                     DataBase.Instance.Arbolstring.Insertar(ListadeTexto);
                 }
 
-                return RedirectToAction("Index");
+                return RedirectToAction("IndexString");
             }
 
         }
