@@ -40,11 +40,14 @@ namespace Librería_de_Clases
                         nodoAuxiliar = nodoAuxiliar.derecho;
                         bDerecha = true;
                     }
-                    else
+                    else if (nNuevo.valor.CompareTo(nodoAuxiliar.valor) < 0)
                     {
                         nodoAuxiliar = nodoAuxiliar.izquierdo;
                         bDerecha = false;
                     }
+                    else
+                        return;
+
                 }
 
                 if (bDerecha)

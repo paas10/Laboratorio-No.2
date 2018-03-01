@@ -16,7 +16,7 @@ namespace Laboratorio_02_1169317_1104017.Controllers
         // Index del arbol de paises
         public ActionResult Index(int? Indicador)
         {
-            Indicador = 2;
+            Indicador = 3;
             if (Indicador == 1)
             {
                 return View(DataBase.Instance.ArbolPais.LeerArbol(1));

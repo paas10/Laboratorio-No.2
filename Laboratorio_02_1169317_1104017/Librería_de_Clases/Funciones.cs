@@ -18,13 +18,13 @@ namespace Librería_de_Clases
         /// </Cadena2></returns>
         public int CompararCadena(string cad1, string cad2)
         {
-            cad1.ToUpper();
-            cad2.ToUpper();
+            cad1 = cad1.ToUpper();
+            cad2 = cad2.ToUpper();
 
             char[] letras1 = cad1.ToCharArray();
             char[] letras2 = cad2.ToCharArray();
 
-            bool condicion = false;
+            bool condicion = true;
             int cont = 0;
             int res = 10;
 
@@ -37,12 +37,12 @@ namespace Librería_de_Clases
 
                     if (l1 < l2)
                     {
-                        res = - 1;
+                        res = 1;
                         break;
                     }
                     if (l1 > l2)
                     { 
-                        res = 1;
+                        res = - 1;
                         break;
                     }
                 }
@@ -50,12 +50,12 @@ namespace Librería_de_Clases
                 {
                     if (letras1.Count() < letras2.Count())
                     { 
-                        res = - 1;
+                        res = 1;
                         break;
                     }
                     else if (letras1.Count() > letras2.Count())
                     {
-                        res = 1;
+                        res = - 1;
                         break;
                     }
                     else if (letras1.Count() == letras2.Count())
