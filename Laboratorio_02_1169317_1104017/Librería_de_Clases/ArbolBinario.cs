@@ -47,7 +47,6 @@ namespace Librería_de_Clases
                     }
                     else
                         return;
-
                 }
 
                 if (bDerecha)
@@ -55,6 +54,34 @@ namespace Librería_de_Clases
                 else
                     nodoPadre.izquierdo = nNuevo;
 
+            }
+        }
+
+        // NO LO HE TERMINADO
+        public void Eliminar(NodoArbol<T> nEliminar)
+        {
+            NodoArbol<T> nodoAuxiliar = nRaiz;
+            NodoArbol<T> nodoPadre = nRaiz;
+            bool bDerecha = false;
+
+            while (nodoAuxiliar != null)
+            {
+                nodoPadre = nodoAuxiliar;
+
+                if (nEliminar.valor.CompareTo(nodoAuxiliar.valor) > 0)
+                {
+                    nodoAuxiliar = nodoAuxiliar.derecho;
+                    bDerecha = true;
+                }
+                else if (nEliminar.valor.CompareTo(nodoAuxiliar.valor) < 0)
+                {
+                    nodoAuxiliar = nodoAuxiliar.izquierdo;
+                    bDerecha = false;
+                }
+                else
+                {
+
+                }
             }
         }
 
@@ -105,6 +132,19 @@ namespace Librería_de_Clases
 
             return resultado;
         }
+
+
+        public string determinarEstado(NodoArbol<T> nodo)
+        {
+            if (nodo.derecho == null && nodo.izquierdo == null)
+                return "Hoja";
+            else if (nodo.izquierdo == null && nodo.derecho != null || nodo.izquierdo != null && nodo.derecho == null)
+                return "Un Hijo";
+            else
+                return "Dos Hijos";
+        }
+
+
 
         public IEnumerator<T> GetEnumerator()
         {
