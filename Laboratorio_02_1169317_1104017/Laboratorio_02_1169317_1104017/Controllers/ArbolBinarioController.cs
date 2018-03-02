@@ -14,63 +14,75 @@ namespace Laboratorio_02_1169317_1104017.Controllers
     {
         // GET: ArbolBinario
         // Index del arbol de paises
-        public ActionResult Index(int? Indicador)
+        public ActionResult Index(int? Tipo)
         {
-            Indicador = 2;
-            if (Indicador == 1)
+            if (Tipo == 1)
             {
                 return View(DataBase.Instance.ArbolPais.LeerArbol(1));
             }
-            else if (Indicador == 2)
+            else if (Tipo == 2)
             {
                 return View(DataBase.Instance.ArbolPais.LeerArbol(2));
 
             }
-            else if (Indicador == 3)
+            else if (Tipo == 3)
             {
                 return View(DataBase.Instance.ArbolPais.LeerArbol(3));
+            }
+            else
+            {
+                Tipo = 1;
+                return View(DataBase.Instance.ArbolPais.LeerArbol(1));
             }
 
             return View();
         }
 
         // Index del arbol de enteros
-        public ActionResult IndexInt(int? Indicador)
+        public ActionResult IndexInt(int? Tipo)
         {
-            Indicador = 2;
-            if (Indicador == 1)
+            if (Tipo == 1)
             {
                 return View(DataBase.Instance.Arbolint.LeerArbol(1));
             }
-            else if (Indicador == 2)
+            else if (Tipo == 2)
             {
                 return View(DataBase.Instance.Arbolint.LeerArbol(2));
 
             }
-            else if (Indicador == 3)
+            else if (Tipo == 3)
             {
                 return View(DataBase.Instance.Arbolint.LeerArbol(3));
+            }
+            else
+            {
+                Tipo = 1;
+                return View(DataBase.Instance.Arbolint.LeerArbol(1));
             }
 
             return View();
         }
 
         // Index del arbol de strings
-        public ActionResult IndexString(int? Indicador)
+        public ActionResult IndexString(int? Tipo)
         {
-            Indicador = 2;
-            if (Indicador == 1)
+            if (Tipo == 1)
             {
                 return View(DataBase.Instance.Arbolstring.LeerArbol(1));
             }
-            else if (Indicador == 2)
+            else if (Tipo == 2)
             {
                 return View(DataBase.Instance.Arbolstring.LeerArbol(2));
 
             }
-            else if (Indicador == 3)
+            else if (Tipo == 3)
             {
                 return View(DataBase.Instance.Arbolstring.LeerArbol(3));
+            }
+            else
+            {
+                Tipo = 1;
+                return View(DataBase.Instance.Arbolstring.LeerArbol(1));
             }
 
             return View();
@@ -88,7 +100,6 @@ namespace Laboratorio_02_1169317_1104017.Controllers
             return View();
         }
 
-
         // POST: ArbolBinario/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
@@ -99,6 +110,55 @@ namespace Laboratorio_02_1169317_1104017.Controllers
                 NodoArbol<Pais> nNodo = new NodoArbol<Pais>(nuevoPais, null, null);
 
                 DataBase.Instance.ArbolPais.Insertar(nNodo);
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+
+        // GET: ArbolBinario/CreateInt
+        public ActionResult CreateInt(int? item)
+        {
+            return View();
+        }
+
+        // POST: ArbolBinario/CreateInt
+        [HttpPost]
+        public ActionResult CreateInt(int item)
+        {
+            try
+            {
+                NodoArbol<int> nNodo = new NodoArbol<int>(item, null, null);
+
+                DataBase.Instance.Arbolint.Insertar(nNodo);
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: ArbolBinario/Create
+        public ActionResult CreateString()
+        {
+            return View();
+        }
+
+        // POST: ArbolBinario/Create
+        [HttpPost]
+        public ActionResult CreateString(string item)
+        {
+            try
+            {
+                NodoArbol<string> nNodo = new NodoArbol<string>(item, null, null);
+
+                DataBase.Instance.Arbolstring.Insertar(nNodo);
 
                 return RedirectToAction("Index");
             }
@@ -131,21 +191,21 @@ namespace Laboratorio_02_1169317_1104017.Controllers
         }
 
         // GET: ArbolBinario/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
             return View();
         }
 
         // POST: ArbolBinario/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(string Nombre, string Grupo)
         {
             try
             {
-                Pais paisEliminar = new Pais(collection["Nombre"], collection["Grupo"]);
+                Pais paisEliminar = new Pais(Nombre,Grupo);
                 NodoArbol<Pais> nodoEliminar = new NodoArbol<Pais>(paisEliminar, null, null);
 
-                DataBase.Instance.ArbolPais.Eliminar(nodoEliminar);
+                DataBase.Instance.ArbolPais.Eliminar(nodoEliminar.valor);
 
                 return RedirectToAction("Index");
             }

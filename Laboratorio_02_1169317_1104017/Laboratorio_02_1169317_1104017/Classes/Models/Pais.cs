@@ -48,7 +48,7 @@ namespace Laboratorio_02_1169317_1104017
 
         Librería_de_Clases.Funciones objFunciones = new Librería_de_Clases.Funciones();
 
-        public int CompareTo(object obj)
+     public int CompareTo(object obj)
         {
             try
             {
@@ -62,15 +62,11 @@ namespace Laboratorio_02_1169317_1104017
             }
         }
 
-
-        /*
-         * ESTE LO HIZO JOUSÉ
-         * 
-        public int CompareTo(object obj)
+       /* public int CompareTo(object obj)
         {
             return Nombre.CompareTo(obj);
-        }
-        */
+        }*/
+        
 
     }
 }

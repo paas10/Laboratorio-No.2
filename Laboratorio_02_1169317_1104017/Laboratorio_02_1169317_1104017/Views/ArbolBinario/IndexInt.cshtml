@@ -7,12 +7,29 @@
 <h2>Arbol de Enteros</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Agregar Nuevo Int", "CreateInt")
 </p>
+
+@Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <div id="contenedor"></div>
+    <h5>Seleccione una Opcion para Ordenar</h5>
+    <form method="get" action="@Url.Action("IndexInt", "ArbolBinario")">
+        <label for="Ordenar">Ordenar Por:</label>
+        <select name="Tipo" id="Tipo">
+            <option value=1>Pre-Orden</option>
+            <option value=2>In-Orden</option>
+            <option value=3>Post-Orden</option>
+        </select>
+        <button type="submit">Ordenar</button>
+    </form>
+</div>
+
 <table class="table">
     <tr>
         <th>
-         Dato
+            Dato
         </th>
         <th></th>
     </tr>
@@ -26,7 +43,7 @@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Delete", "Delete", new {item})
             </td>
         </tr>
     }

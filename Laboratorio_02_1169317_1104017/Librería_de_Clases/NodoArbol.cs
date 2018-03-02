@@ -17,5 +17,12 @@ namespace Librería_de_Clases
             derecho = derecha;
         }
 
+        public bool EsHoja
+        {
+            get
+            {
+                return derecho == null && izquierdo == null;
+            }
+        }
     }
 }

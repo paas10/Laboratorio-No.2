@@ -3,6 +3,7 @@
     ViewBag.Title = "Cargar Archivo";
 }
 
+<h2>Subir Archivo</h2>
 @using (Html.BeginForm("UploadFile", "ArbolBinario", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken();
@@ -27,4 +28,3 @@
     </div>
 }
 
-<h2>UploadFile</h2>
