@@ -57,7 +57,6 @@ namespace Librería_de_Clases
             }
         }
 
-        // NO LO HE TERMINADO
         public void Eliminar(NodoArbol<T> nEliminar)
         {
             NodoArbol<T> nodoAuxiliar = nRaiz;
@@ -80,10 +79,83 @@ namespace Librería_de_Clases
                 }
                 else
                 {
+                    if (determinarEstado(nodoAuxiliar) == "Hoja")
+                    {
+                        if (bDerecha == true)
+                            nodoPadre.derecho = null;
+                        else
+                            nodoPadre.izquierdo = null;
+                    }
+                    else if (determinarEstado(nodoAuxiliar) == "Un Hijo")
+                    {
+                        if (nodoAuxiliar.derecho == null)
+                        {
+                            if (bDerecha == true)
+                                nodoPadre.derecho = nodoAuxiliar.izquierdo;
+                            else
+                                nodoPadre.izquierdo = nodoAuxiliar.izquierdo;
+                        }
+                        else
+                        {
+                            if (bDerecha == true)
+                                nodoPadre.derecho = nodoAuxiliar.derecho;
+                            else
+                                nodoPadre.izquierdo = nodoAuxiliar.derecho;
+                        }
+                    }
+                    else if (determinarEstado(nodoAuxiliar) == "Dos Hijos")
+                    {
+                        NodoArbol<T> nodoMiniPadre = nodoAuxiliar;
 
+                        if (bDerecha == true)
+                        {
+                            nodoMiniPadre = nodoAuxiliar;
+                            nodoAuxiliar = nodoAuxiliar.izquierdo;
+
+                            if (nodoAuxiliar.derecho == null)
+                            {
+                                nodoPadre.derecho = nodoAuxiliar;
+                                nodoMiniPadre.derecho = null;
+                            }
+                            else
+                            {
+                                while (nodoAuxiliar.derecho != null)
+                                {
+                                    nodoMiniPadre = nodoAuxiliar;
+                                    nodoAuxiliar = nodoAuxiliar.derecho;
+                                }
+
+                                nodoPadre.derecho = nodoAuxiliar;
+                                nodoMiniPadre.derecho = null;
+                            }
+                        }
+                        else
+                        {
+                            nodoMiniPadre = nodoAuxiliar;
+                            nodoAuxiliar = nodoAuxiliar.derecho;
+
+                            if (nodoAuxiliar.izquierdo == null)
+                            {
+                                nodoPadre.izquierdo = nodoAuxiliar;
+                                nodoMiniPadre.izquierdo = null;
+                            }
+                            else
+                            {
+                                while (nodoAuxiliar.izquierdo != null)
+                                {
+                                    nodoMiniPadre = nodoAuxiliar;
+                                    nodoAuxiliar = nodoAuxiliar.izquierdo;
+                                }
+
+                                nodoPadre.izquierdo = nodoAuxiliar;
+                                nodoMiniPadre.izquierdo = null;
+                            }
+                        }
+                    }
                 }
             }
         }
+
 
         private void PreOrden(NodoArbol<T> nodoAuxiliar, ref List<T> resultado)
         {

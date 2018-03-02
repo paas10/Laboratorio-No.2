@@ -16,7 +16,7 @@ namespace Laboratorio_02_1169317_1104017.Controllers
         // Index del arbol de paises
         public ActionResult Index(int? Indicador)
         {
-            Indicador = 3;
+            Indicador = 2;
             if (Indicador == 1)
             {
                 return View(DataBase.Instance.ArbolPais.LeerArbol(1));
@@ -142,6 +142,10 @@ namespace Laboratorio_02_1169317_1104017.Controllers
         {
             try
             {
+                Pais paisEliminar = new Pais(collection["Nombre"], collection["Grupo"]);
+                NodoArbol<Pais> nodoEliminar = new NodoArbol<Pais>(paisEliminar, null, null);
+
+                DataBase.Instance.ArbolPais.Eliminar(nodoEliminar);
 
                 return RedirectToAction("Index");
             }

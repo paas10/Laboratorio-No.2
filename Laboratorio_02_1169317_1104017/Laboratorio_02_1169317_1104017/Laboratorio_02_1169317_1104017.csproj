@@ -193,6 +193,7 @@
     <Content Include="Views\ArbolBinario\IndexInt.cshtml" />
     <Content Include="Views\ArbolBinario\IndexString.cshtml" />
     <Content Include="Views\ArbolBinario\Create.cshtml" />
+    <Content Include="Views\ArbolBinario\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
