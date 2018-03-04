@@ -21,53 +21,12 @@ namespace Librería_de_Clases
               cad1 = cad1.ToUpper();
               cad2 = cad2.ToUpper();
 
-              char[] letras1 = cad1.ToCharArray();
-              char[] letras2 = cad2.ToCharArray();
+              int res = 0;
 
-              bool condicion = true;
-              int cont = 0;
-              int res = 10;
-
-              while (condicion)
-              {
-                  try
-                  {
-                      int l1 = Convert.ToInt16(letras1[cont]);
-                      int l2 = Convert.ToInt16(letras2[cont]);
-
-
-                      if (cad1.CompareTo(cad2) < 0)
-                      {
-                          res = 1;
-                          break;
-                      }
-                      if (cad1.CompareTo(cad2) > 0)
-                      { 
-                          res = -1;
-                          break;
-                      }
-                  }
-                  catch
-                  {
-                      if (letras1.Count() < letras2.Count())
-                      { 
-                          res = 1;
-                          break;
-                      }
-                      else if (letras1.Count() > letras2.Count())
-                      {
-                          res = - 1;
-                          break;
-                      }
-                      else if (letras1.Count() == letras2.Count())
-                      {
-                          res = 0;
-                          break;
-                      }
-                  }
-
-                  cont++;
-              }
+              if (cad1.CompareTo(cad2) < 0)
+                  res = -1;              
+              else if (cad1.CompareTo(cad2) > 0)
+                  res = 1;
 
               return res;
 

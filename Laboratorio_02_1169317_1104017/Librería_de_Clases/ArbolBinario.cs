@@ -167,9 +167,11 @@ namespace Librería_de_Clases
             NodoArbol<T> auxiliar = nRaiz;
             NodoArbol<T> padre = nRaiz;
             bool esHijoIzquierdo = true;
-            while (auxiliar.valor.CompareTo(valor) != 0)
+
+            while (valor.CompareTo(auxiliar.valor) != 0)
             {
                 padre = auxiliar;
+
                 if (valor.CompareTo(auxiliar.valor) < 0)
                 {
                     esHijoIzquierdo = true;
@@ -185,6 +187,7 @@ namespace Librería_de_Clases
                     return null;
                 }
             }// Fin ciclo inicial
+
             if (auxiliar.EsHoja)
             {
                 if (auxiliar == nRaiz)
@@ -252,6 +255,7 @@ namespace Librería_de_Clases
             }
             return auxiliar;
         }
+
         /// <summary>
         /// Elimina un Nodo mediante sustitucion
         /// </summary>
@@ -323,17 +327,6 @@ namespace Librería_de_Clases
             }
 
             return resultado;
-        }
-
-
-        public string determinarEstado(NodoArbol<T> nodo)
-        {
-            if (nodo.derecho == null && nodo.izquierdo == null)
-                return "Hoja";
-            else if (nodo.izquierdo == null && nodo.derecho != null || nodo.izquierdo != null && nodo.derecho == null)
-                return "Un Hijo";
-            else
-                return "Dos Hijos";
         }
 
         public string Degenerado()

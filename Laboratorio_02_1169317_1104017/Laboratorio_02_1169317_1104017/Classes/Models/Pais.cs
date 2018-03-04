@@ -54,7 +54,7 @@ namespace Laboratorio_02_1169317_1104017
             {
                 Pais pais = obj as Pais;
 
-                return objFunciones.CompararCadena(pais.Nombre, Nombre);
+                return objFunciones.CompararCadena(Nombre, pais.Nombre);
             }
             catch (Exception e)
             {
