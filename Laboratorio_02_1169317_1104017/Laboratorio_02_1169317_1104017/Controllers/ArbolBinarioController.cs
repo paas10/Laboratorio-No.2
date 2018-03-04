@@ -31,10 +31,21 @@ namespace Laboratorio_02_1169317_1104017.Controllers
             }
             else
             {
+
                 Tipo = 1;
+                string Resultado = DataBase.Instance.ArbolPais.Degenerado();
+                if(Resultado == "Generado")
+                {
+                    TempData["msg"] = "<script>alert('El Arbol que se cargo es Generado');</script>";
+                }
+                else
+                {
+                    TempData["msg"] = "<script>alert('El Arbol que se cargo es Degenerado');</script>";
+                }
                 return View(DataBase.Instance.ArbolPais.LeerArbol(1));
             }
 
+           
             return View();
         }
 

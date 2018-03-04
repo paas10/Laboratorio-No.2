@@ -336,6 +336,86 @@ namespace Librería_de_Clases
                 return "Dos Hijos";
         }
 
+        public string Degenerado()
+        {
+            NodoArbol<T> auxiliar = nRaiz;
+            int ContadorIzquierda = 0;
+            int ContadorDerecha = 0;
+
+            while(auxiliar != null)
+            {
+                if(auxiliar.izquierdo == null)
+                {
+                    if (auxiliar.derecho != null)
+                    {
+                        auxiliar = auxiliar.derecho;
+                        ContadorIzquierda++;
+                    }
+                    else
+                    {
+                        auxiliar = auxiliar.derecho;
+                    }
+                }else
+                {
+                    auxiliar = auxiliar.izquierdo;
+                    ContadorIzquierda++;
+                }
+            }
+
+            auxiliar = nRaiz;
+            while (auxiliar != null)
+            {
+                if (auxiliar.derecho == null)
+                {
+                    if (auxiliar.izquierdo != null)
+                    {
+                        auxiliar = auxiliar.izquierdo;
+                        ContadorDerecha++;
+                    }
+                    else
+                    {
+                        auxiliar = auxiliar.izquierdo;
+                    }   
+                }
+                else
+                {
+                    auxiliar = auxiliar.derecho;
+                    ContadorDerecha++;
+                }
+            }
+
+            if((ContadorDerecha == ContadorIzquierda))
+            {
+                return "Generado";
+            }
+            else if (ContadorDerecha>ContadorIzquierda)
+            {
+                if ((ContadorDerecha - ContadorIzquierda) <= 2)
+                {
+                    return "Generado";
+                }
+                else
+                {
+                    return "Degenerado";
+                }
+                
+            }else if (ContadorIzquierda>ContadorDerecha)
+            {
+                if ((ContadorIzquierda - ContadorDerecha) <= 2)
+                {
+                    return "Generado";
+                }
+                else
+                {
+                    return "Degenerado";
+                }
+
+            }
+
+            return "Error";
+
+        }
+
 
 
         public IEnumerator<T> GetEnumerator()

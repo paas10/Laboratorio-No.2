@@ -18,13 +18,15 @@
     <form method="get" action="@Url.Action("Index", "ArbolBinario")">
         <label for="Ordenar">Ordenar Por:</label>
         <select name="Tipo" id="Tipo">
-            <option value= 1>Pre-Orden</option>
-            <option value= 2>In-Orden</option>
-            <option value= 3>Post-Orden</option>
+            <option value=1>Pre-Orden</option>
+            <option value=2>In-Orden</option>
+            <option value=3>Post-Orden</option>
         </select>
         <button type="submit">Ordenar</button>
     </form>
 </div>
+
+@Html.Raw(TempData["msg"])
 
 <table class="table">
     <tr>
