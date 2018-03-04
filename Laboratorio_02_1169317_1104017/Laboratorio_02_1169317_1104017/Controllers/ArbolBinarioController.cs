@@ -147,7 +147,7 @@ namespace Laboratorio_02_1169317_1104017.Controllers
 
                 DataBase.Instance.Arbolint.Insertar(nNodo);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("IndexInt");
             }
             catch
             {
@@ -171,7 +171,7 @@ namespace Laboratorio_02_1169317_1104017.Controllers
 
                 DataBase.Instance.Arbolstring.Insertar(nNodo);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("IndexString");
             }
             catch
             {
