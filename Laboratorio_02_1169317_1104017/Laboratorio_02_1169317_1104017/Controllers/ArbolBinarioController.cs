@@ -17,98 +17,71 @@ namespace Laboratorio_02_1169317_1104017.Controllers
         // Index del arbol de paises
         public ActionResult Index(int? Tipo)
         {
-            if (Tipo == 1)
-            {
-                return View(DataBase.Instance.ArbolPais.LeerArbol(1));
-            }
-            else if (Tipo == 2)
-            {
-                return View(DataBase.Instance.ArbolPais.LeerArbol(2));
-
-            }
-            else if (Tipo == 3)
-            {
-                return View(DataBase.Instance.ArbolPais.LeerArbol(3));
-            }
-            else
-            {
-
+            if (Tipo != 1 && Tipo != 2 && Tipo != 3)
                 Tipo = 1;
-                string Resultado = DataBase.Instance.ArbolPais.Balanceado();
-                if(Resultado == "Balanceado")
-                {
-                    TempData["msg"] = "<script>alert('El Arbol que se cargo esta Balanceado');</script>";
-                    
-                }
-                else
-                {
-                    TempData["msg"] = "<script> alert('" + Resultado + " .');</script>";
-                }
+            
+            string Resultado = DataBase.Instance.ArbolPais.Balanceado();
+            if (Resultado == "Balanceado")
+                TempData["msg"] = "<script>alert('El Arbol que se cargo esta Balanceado');</script>";
+            else
+                TempData["msg"] = "<script> alert('" + Resultado + " .');</script>";
 
-                string ResultadoDegenerado = DataBase.Instance.ArbolPais.Degenerado();
-                if (Resultado == "Degenerado")
-                {
-                    TempData["msg1"] = "<script>alert('El Arbol que se cargo es Degenerado');</script>";
-                }
-                else
-                {
-                    TempData["msg1"] = "<script> alert('El Arbol que se cargo NO es Degenerado');</script>";
-                }
-                return View(DataBase.Instance.ArbolPais.LeerArbol(1));
-            }
+            string ResultadoDegenerado = DataBase.Instance.ArbolPais.Degenerado();
+            if (Resultado == "Degenerado")
+                TempData["msg1"] = "<script>alert('El Arbol que se cargo es Degenerado');</script>";
+            else
+                TempData["msg1"] = "<script> alert('El Arbol que se cargo NO es Degenerado');</script>";
+ 
 
-           
-            return View();
+            return View(DataBase.Instance.ArbolPais.LeerArbol(Convert.ToInt16(Tipo)));
+            
         }
 
         // Index del arbol de enteros
         public ActionResult IndexInt(int? Tipo)
         {
-            if (Tipo == 1)
-            {
-                return View(DataBase.Instance.Arbolint.LeerArbol(1));
-            }
-            else if (Tipo == 2)
-            {
-                return View(DataBase.Instance.Arbolint.LeerArbol(2));
-
-            }
-            else if (Tipo == 3)
-            {
-                return View(DataBase.Instance.Arbolint.LeerArbol(3));
-            }
-            else
-            {
+            if (Tipo != 1 && Tipo != 2 && Tipo != 3)
                 Tipo = 1;
-                return View(DataBase.Instance.Arbolint.LeerArbol(1));
-            }
 
-            return View();
+            string Resultado = DataBase.Instance.Arbolint.Balanceado();
+            if (Resultado == "Balanceado")
+                TempData["msg"] = "<script>alert('El Arbol que se cargo esta Balanceado');</script>";
+            else
+                TempData["msg"] = "<script> alert('" + Resultado + " .');</script>";
+
+            string ResultadoDegenerado = DataBase.Instance.Arbolint.Degenerado();
+            if (Resultado == "Degenerado")
+                TempData["msg1"] = "<script>alert('El Arbol que se cargo es Degenerado');</script>";
+            else
+                TempData["msg1"] = "<script> alert('El Arbol que se cargo NO es Degenerado');</script>";
+
+
+            return View(DataBase.Instance.Arbolint.LeerArbol(Convert.ToInt16(Tipo)));
+            
         }
 
         // Index del arbol de strings
         public ActionResult IndexString(int? Tipo)
         {
-            if (Tipo == 1)
-            {
-                return View(DataBase.Instance.Arbolstring.LeerArbol(1));
-            }
-            else if (Tipo == 2)
-            {
-                return View(DataBase.Instance.Arbolstring.LeerArbol(2));
-
-            }
-            else if (Tipo == 3)
-            {
-                return View(DataBase.Instance.Arbolstring.LeerArbol(3));
-            }
-            else
-            {
+            if (Tipo != 1 && Tipo != 2 && Tipo != 3)
                 Tipo = 1;
-                return View(DataBase.Instance.Arbolstring.LeerArbol(1));
-            }
 
-            return View();
+
+            string Resultado = DataBase.Instance.Arbolstring.Balanceado();
+            if (Resultado == "Balanceado")
+                TempData["msg"] = "<script>alert('El Arbol que se cargo esta Balanceado');</script>";
+            else
+                TempData["msg"] = "<script> alert('" + Resultado + " .');</script>";
+
+            string ResultadoDegenerado = DataBase.Instance.Arbolstring.Degenerado();
+            if (Resultado == "Degenerado")
+                TempData["msg1"] = "<script>alert('El Arbol que se cargo es Degenerado');</script>";
+            else
+                TempData["msg1"] = "<script> alert('El Arbol que se cargo NO es Degenerado');</script>";
+
+
+            return View(DataBase.Instance.Arbolstring.LeerArbol(Convert.ToInt16(Tipo)));
+            
         }
 
         // GET: ArbolBinario/Details/5
@@ -141,7 +114,6 @@ namespace Laboratorio_02_1169317_1104017.Controllers
                 return View();
             }
         }
-
 
         // GET: ArbolBinario/CreateInt
         public ActionResult CreateInt(int? item)
@@ -191,28 +163,6 @@ namespace Laboratorio_02_1169317_1104017.Controllers
             }
         }
 
-        // GET: ArbolBinario/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: ArbolBinario/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
         // GET: ArbolBinario/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -238,9 +188,57 @@ namespace Laboratorio_02_1169317_1104017.Controllers
             }
         }
 
+        // GET: ArbolBinario/DeletInte/5
+        public ActionResult DeleteInt(int? id)
+        {
+            return View();
+        }
+
+        // POST: ArbolBinario/DeleteInt/5
+        [HttpPost]
+        public ActionResult DeleteInt(int item)
+        {
+            try
+            {
+                NodoArbol<int> nodoEliminar = new NodoArbol<int>(item, null, null);
+
+                DataBase.Instance.Arbolint.Eliminar(nodoEliminar.valor);
+
+                return RedirectToAction("IndexInt");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
         public ActionResult UploadFile()
         {
             return View();
+        }
+
+        // GET: ArbolBinario/DeleteString/5
+        public ActionResult DeleteString(int? id)
+        {
+            return View();
+        }
+
+        // POST: ArbolBinario/DeleteString/5
+        [HttpPost]
+        public ActionResult DeleteString(string item)
+        {
+            try
+            {
+                NodoArbol<string> nodoEliminar = new NodoArbol<string>(item, null, null);
+
+                DataBase.Instance.Arbolstring.Eliminar(nodoEliminar.valor);
+
+                return RedirectToAction("IndexString");
+            }
+            catch
+            {
+                return View();
+            }
         }
 
         [HttpPost]

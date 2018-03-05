@@ -196,6 +196,8 @@
     <Content Include="Views\ArbolBinario\Delete.cshtml" />
     <Content Include="Views\ArbolBinario\CreateInt.cshtml" />
     <Content Include="Views\ArbolBinario\CreateString.cshtml" />
+    <Content Include="Views\ArbolBinario\DeleteInt.cshtml" />
+    <Content Include="Views\ArbolBinario\DeleteString.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

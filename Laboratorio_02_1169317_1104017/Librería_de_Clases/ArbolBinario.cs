@@ -340,7 +340,8 @@ namespace Librería_de_Clases
                 {
                     auxiliar = auxiliar.izquierdo;
                     Degenerado = true;
-                }else if (auxiliar.izquierdo == null)
+                }
+                else if (auxiliar.izquierdo == null)
                 {
                     auxiliar = auxiliar.derecho;
                     Degenerado = true;

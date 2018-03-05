@@ -10,6 +10,8 @@
     @Html.ActionLink("Agregar Nuevo String", "CreateString")
 </p>
 
+<br />
+
 @Html.AntiForgeryToken()
 
 <div class="form-horizontal">
@@ -29,7 +31,7 @@
 <table class="table">
     <tr>
         <th>
-            Dato
+            Texto
         </th>
     </tr>
 
@@ -40,11 +42,14 @@
                 @Html.DisplayFor(modelItem => item)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new {item})
+                @*  @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) | *@
+                @Html.ActionLink("Delete", "DeleteString", new {item})
             </td>
         </tr>
     }
 
 </table>
+
+@Html.Raw(TempData["msg"])
+@Html.Raw(TempData["msg1"])

@@ -1,15 +1,16 @@
-﻿@model Laboratorio_02_1169317_1104017.Pais
+﻿@model IEnumerable<string>
 
 @{
-    ViewBag.Title = "Eliminar Pais";
+    ViewBag.Title = "Eliminar String";
 }
 
-<h2 align ="center">Eliminar Pais</h2>
+<h2 aling ="center">Eliminar String</h2>
 
 <br />
 
-<h4>¿Estás seguro que deseas eliminar este Pais?</h4>
+<h4>¿Estás seguro de querer eliminar este nodo?</h4>
 <div>
+
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
@@ -19,7 +20,7 @@
             <input type="submit" value="Delete" class="btn btn-default" /> 
             <br />
             <br />
-            @Html.ActionLink("Ver Lista de Paises", "Index")
+            @Html.ActionLink("Regresar a la lista de string", "IndexString")
         </div>
     }
 </div>

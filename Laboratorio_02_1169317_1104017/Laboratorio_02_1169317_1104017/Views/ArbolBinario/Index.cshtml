@@ -30,9 +30,6 @@
 
 <br />
 
-@Html.Raw(TempData["msg"])
-@Html.Raw(TempData["msg1"])
-
 <table class="table">
     <tr>
         <th>
@@ -55,10 +52,13 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @* @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) | *@
                 @Html.ActionLink("Delete", "Delete", new { Nombre = item.Nombre, Grupo = item.Grupo })
             </td>
         </tr>
     }
 
 </table>
+
+@Html.Raw(TempData["msg"])
+@Html.Raw(TempData["msg1"])
