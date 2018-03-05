@@ -354,7 +354,12 @@ namespace Librería_de_Clases
                     
             }
 
-            if(Degenerado == true)
+            if (nRaiz.izquierdo == null || nRaiz.derecho == null)
+            {
+                Degenerado = false;
+            }
+
+            if (Degenerado == true)
             {
                 return "Generado";
             }else
@@ -374,6 +379,11 @@ namespace Librería_de_Clases
 
             while (auxiliar != null)
             {
+                if (nRaiz.izquierdo == null || nRaiz.derecho == null)
+                {
+                    ContadorIzquierda = -1;
+                    break;
+                }
                 if (auxiliar.izquierdo == null)
                 {
                     if (auxiliar.derecho != null)
@@ -401,6 +411,11 @@ namespace Librería_de_Clases
             auxiliar = nRaiz;
             while (auxiliar != null)
             {
+                if(nRaiz.izquierdo == null || nRaiz.derecho == null)
+                {
+                    ContadorDerecha = -1;
+                    break;
+                }
                 if (auxiliar.derecho == null)
                 {
                     if (auxiliar.izquierdo != null)
@@ -425,9 +440,13 @@ namespace Librería_de_Clases
                 }
             }
 
-            if ((ContadorDerecha == ContadorIzquierda))
+            if ((ContadorDerecha == ContadorIzquierda && (ContadorDerecha !=-1 || ContadorIzquierda != -1)))
             {
                 return "Balanceado";
+            }
+            else if(ContadorDerecha == -1 || ContadorIzquierda == -1)
+            {
+                return "No Balanceado, el Árbol no se encuentra balanceado porque el nodo raiz, solo posee un nodo, ya sea izquierdo o Derecho";
             }
             else if (ContadorDerecha > ContadorIzquierda)
             {

@@ -27,7 +27,7 @@ namespace Laboratorio_02_1169317_1104017.Controllers
                 TempData["msg"] = "<script> alert('" + Resultado + " .');</script>";
 
             string ResultadoDegenerado = DataBase.Instance.ArbolPais.Degenerado();
-            if (Resultado == "Degenerado")
+            if (ResultadoDegenerado == "Degenerado")
                 TempData["msg1"] = "<script>alert('El Arbol que se cargo es Degenerado');</script>";
             else
                 TempData["msg1"] = "<script> alert('El Arbol que se cargo NO es Degenerado');</script>";
