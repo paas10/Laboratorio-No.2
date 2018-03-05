@@ -332,25 +332,67 @@ namespace Librería_de_Clases
         public string Degenerado()
         {
             NodoArbol<T> auxiliar = nRaiz;
+            bool Degenerado = false;
+
+            while (auxiliar != null)
+            {
+                if(auxiliar.derecho == null)
+                {
+                    auxiliar = auxiliar.izquierdo;
+                    Degenerado = true;
+                }else if (auxiliar.izquierdo == null)
+                {
+                    auxiliar = auxiliar.derecho;
+                    Degenerado = true;
+                }
+                else
+                {
+                    Degenerado = false;
+                    break;
+                }
+                    
+            }
+
+            if(Degenerado == true)
+            {
+                return "Generado";
+            }else
+            {
+                return "Degenerado";
+            }
+            
+        }
+
+        public string Balanceado()
+        {
+            NodoArbol<T> auxiliar = nRaiz;
+            NodoArbol<T> NodoNoBalanceadoI = nRaiz;
+            NodoArbol<T> NodoNoBalanceadoD = nRaiz;
             int ContadorIzquierda = 0;
             int ContadorDerecha = 0;
 
-            while(auxiliar != null)
+            while (auxiliar != null)
             {
-                if(auxiliar.izquierdo == null)
+                if (auxiliar.izquierdo == null)
                 {
                     if (auxiliar.derecho != null)
                     {
                         auxiliar = auxiliar.derecho;
+                        NodoNoBalanceadoI = auxiliar;
                         ContadorIzquierda++;
                     }
                     else
                     {
                         auxiliar = auxiliar.derecho;
                     }
-                }else
+                }
+                else
                 {
                     auxiliar = auxiliar.izquierdo;
+                    if(auxiliar != null)
+                    {
+                        NodoNoBalanceadoI = auxiliar;
+                    }
                     ContadorIzquierda++;
                 }
             }
@@ -363,44 +405,50 @@ namespace Librería_de_Clases
                     if (auxiliar.izquierdo != null)
                     {
                         auxiliar = auxiliar.izquierdo;
+                        NodoNoBalanceadoD = auxiliar;
                         ContadorDerecha++;
                     }
                     else
                     {
                         auxiliar = auxiliar.izquierdo;
-                    }   
+                    }
                 }
                 else
                 {
                     auxiliar = auxiliar.derecho;
+                    if(auxiliar != null)
+                    {
+                        NodoNoBalanceadoD = auxiliar;
+                    }
                     ContadorDerecha++;
                 }
             }
 
-            if((ContadorDerecha == ContadorIzquierda))
+            if ((ContadorDerecha == ContadorIzquierda))
             {
-                return "Generado";
+                return "Balanceado";
             }
-            else if (ContadorDerecha>ContadorIzquierda)
+            else if (ContadorDerecha > ContadorIzquierda)
             {
-                if ((ContadorDerecha - ContadorIzquierda) <= 2)
+                if ((ContadorDerecha - ContadorIzquierda) <= 1)
                 {
-                    return "Generado";
+                    return "Balanceado";
                 }
                 else
                 {
-                    return "Degenerado";
+                    return "No Balanceado, El nodo que no se encuentra balanceado es: "+NodoNoBalanceadoI.valor;
                 }
-                
-            }else if (ContadorIzquierda>ContadorDerecha)
+
+            }
+            else if (ContadorIzquierda > ContadorDerecha)
             {
-                if ((ContadorIzquierda - ContadorDerecha) <= 2)
+                if ((ContadorIzquierda - ContadorDerecha) <= 1)
                 {
-                    return "Generado";
+                    return "Balanceado";
                 }
                 else
                 {
-                    return "Degenerado";
+                    return "No Balanceado, El nodo que no se encuentra balanceado es: " + NodoNoBalanceadoD.valor;
                 }
 
             }

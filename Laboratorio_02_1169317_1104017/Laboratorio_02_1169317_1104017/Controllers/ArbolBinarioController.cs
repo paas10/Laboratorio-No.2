@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 
 namespace Laboratorio_02_1169317_1104017.Controllers
 {
@@ -33,14 +34,25 @@ namespace Laboratorio_02_1169317_1104017.Controllers
             {
 
                 Tipo = 1;
-                string Resultado = DataBase.Instance.ArbolPais.Degenerado();
-                if(Resultado == "Generado")
+                string Resultado = DataBase.Instance.ArbolPais.Balanceado();
+                if(Resultado == "Balanceado")
                 {
-                    TempData["msg"] = "<script>alert('El Arbol que se cargo es Generado');</script>";
+                    TempData["msg"] = "<script>alert('El Arbol que se cargo esta Balanceado');</script>";
+                    
                 }
                 else
                 {
-                    TempData["msg"] = "<script>alert('El Arbol que se cargo es Degenerado');</script>";
+                    TempData["msg"] = "<script> alert('" + Resultado + " .');</script>";
+                }
+
+                string ResultadoDegenerado = DataBase.Instance.ArbolPais.Degenerado();
+                if (Resultado == "Degenerado")
+                {
+                    TempData["msg1"] = "<script>alert('El Arbol que se cargo es Degenerado');</script>";
+                }
+                else
+                {
+                    TempData["msg1"] = "<script> alert('El Arbol que se cargo NO es Degenerado');</script>";
                 }
                 return View(DataBase.Instance.ArbolPais.LeerArbol(1));
             }
