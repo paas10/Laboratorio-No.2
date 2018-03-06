@@ -354,19 +354,26 @@ namespace Librería_de_Clases
                     
             }
 
-            if (nRaiz.izquierdo == null || nRaiz.derecho == null)
+            try
             {
-                Degenerado = true;
-            }
+                if (nRaiz.izquierdo == null || nRaiz.derecho == null)
+                {
+                    Degenerado = true;
+                }
 
-            if (Degenerado == false)
-            {
-                return "Generado";
-            }else
-            {
-                return "Degenerado";
+                if (Degenerado == false)
+                {
+                    return "Generado";
+                }
+                else
+                {
+                    return "Degenerado";
+                }
             }
-            
+            catch
+            {
+                return "* ERROR 404 * El arbol está vacío";
+            }
         }
 
         public string Balanceado()

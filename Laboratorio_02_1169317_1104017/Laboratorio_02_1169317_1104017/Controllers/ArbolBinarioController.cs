@@ -19,19 +19,27 @@ namespace Laboratorio_02_1169317_1104017.Controllers
         {
             if (Tipo != 1 && Tipo != 2 && Tipo != 3)
                 Tipo = 1;
-            
-            string Resultado = DataBase.Instance.ArbolPais.Balanceado();
-            if (Resultado == "Balanceado")
-                TempData["msg"] = "<script>alert('El Arbol que se cargo esta Balanceado');</script>";
-            else
-                TempData["msg"] = "<script> alert('" + Resultado + " .');</script>";
 
+            string Resultado = DataBase.Instance.ArbolPais.Balanceado();
             string ResultadoDegenerado = DataBase.Instance.ArbolPais.Degenerado();
-            if (ResultadoDegenerado == "Degenerado")
-                TempData["msg1"] = "<script>alert('El Arbol que se cargo es Degenerado');</script>";
+
+            if (ResultadoDegenerado == "* ERROR 404 * El arbol está vacío")
+            {
+                TempData["msg"] = "<script> alert('* ERROR 404 * El arbol está vacío');</script>";
+            }
             else
-                TempData["msg1"] = "<script> alert('El Arbol que se cargo NO es Degenerado');</script>";
- 
+            {
+                if (Resultado == "Balanceado")
+                    TempData["msg"] = "<script>alert('El Arbol que se cargo esta Balanceado');</script>";
+                else
+                    TempData["msg"] = "<script> alert('" + Resultado + " .');</script>";
+
+
+                if (ResultadoDegenerado == "Degenerado")
+                    TempData["msg1"] = "<script>alert('El Arbol que se cargo es Degenerado');</script>";
+                else
+                    TempData["msg1"] = "<script> alert('El Arbol que se cargo NO es Degenerado');</script>";
+            }
 
             return View(DataBase.Instance.ArbolPais.LeerArbol(Convert.ToInt16(Tipo)));
             
@@ -44,17 +52,25 @@ namespace Laboratorio_02_1169317_1104017.Controllers
                 Tipo = 1;
 
             string Resultado = DataBase.Instance.Arbolint.Balanceado();
-            if (Resultado == "Balanceado")
-                TempData["msg"] = "<script>alert('El Arbol que se cargo esta Balanceado');</script>";
-            else
-                TempData["msg"] = "<script> alert('" + Resultado + " .');</script>";
-
             string ResultadoDegenerado = DataBase.Instance.Arbolint.Degenerado();
-            if (Resultado == "Degenerado")
-                TempData["msg1"] = "<script>alert('El Arbol que se cargo es Degenerado');</script>";
-            else
-                TempData["msg1"] = "<script> alert('El Arbol que se cargo NO es Degenerado');</script>";
 
+            if (ResultadoDegenerado == "* ERROR 404 * El arbol está vacío")
+            {
+                TempData["msg"] = "<script> alert('* ERROR 404 * El arbol está vacío');</script>";
+            }
+            else
+            {
+                if (Resultado == "Balanceado")
+                    TempData["msg"] = "<script>alert('El Arbol que se cargo esta Balanceado');</script>";
+                else
+                    TempData["msg"] = "<script> alert('" + Resultado + " .');</script>";
+
+
+                if (Resultado == "Degenerado")
+                    TempData["msg1"] = "<script>alert('El Arbol que se cargo es Degenerado');</script>";
+                else
+                    TempData["msg1"] = "<script> alert('El Arbol que se cargo NO es Degenerado');</script>";
+            }
 
             return View(DataBase.Instance.Arbolint.LeerArbol(Convert.ToInt16(Tipo)));
             
@@ -66,19 +82,25 @@ namespace Laboratorio_02_1169317_1104017.Controllers
             if (Tipo != 1 && Tipo != 2 && Tipo != 3)
                 Tipo = 1;
 
-
             string Resultado = DataBase.Instance.Arbolstring.Balanceado();
-            if (Resultado == "Balanceado")
-                TempData["msg"] = "<script>alert('El Arbol que se cargo esta Balanceado');</script>";
-            else
-                TempData["msg"] = "<script> alert('" + Resultado + " .');</script>";
-
             string ResultadoDegenerado = DataBase.Instance.Arbolstring.Degenerado();
-            if (Resultado == "Degenerado")
-                TempData["msg1"] = "<script>alert('El Arbol que se cargo es Degenerado');</script>";
-            else
-                TempData["msg1"] = "<script> alert('El Arbol que se cargo NO es Degenerado');</script>";
 
+            if (ResultadoDegenerado == "* ERROR 404 * El arbol está vacío")
+            {
+                TempData["msg"] = "<script> alert('* ERROR 404 * El arbol está vacío');</script>";
+            }
+            else
+            {
+                if (Resultado == "Balanceado")
+                    TempData["msg"] = "<script>alert('El Arbol que se cargo esta Balanceado');</script>";
+                else
+                    TempData["msg"] = "<script> alert('" + Resultado + " .');</script>";
+
+                if (Resultado == "Degenerado")
+                    TempData["msg1"] = "<script>alert('El Arbol que se cargo es Degenerado');</script>";
+                else
+                    TempData["msg1"] = "<script> alert('El Arbol que se cargo NO es Degenerado');</script>";
+            }
 
             return View(DataBase.Instance.Arbolstring.LeerArbol(Convert.ToInt16(Tipo)));
             
