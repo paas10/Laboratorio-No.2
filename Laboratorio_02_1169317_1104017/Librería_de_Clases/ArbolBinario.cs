@@ -356,10 +356,10 @@ namespace Librería_de_Clases
 
             if (nRaiz.izquierdo == null || nRaiz.derecho == null)
             {
-                Degenerado = false;
+                Degenerado = true;
             }
 
-            if (Degenerado == true)
+            if (Degenerado == false)
             {
                 return "Generado";
             }else
